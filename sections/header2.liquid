@@ -1,0 +1,37 @@
+<header>
+    <div class="container">
+      
+    </div>
+</header>
+{% schema %}
+{
+    "name":"header-2",
+    "settings":[
+        {
+            "type":"select",
+            "id":"bg_color_scheme",
+            "label":"Background Color",
+            "default":"bg-white",
+            "options":[
+                {
+                    "value": "bg-blue",
+                    "label": "blue"
+                  },
+                  {
+                    "value": "bg-white",
+                    "label": "white"
+                  },
+                  {
+                    "value": "bg-black",
+                    "label": "black"
+                  }
+            ]
+        }
+    ],
+    "presets":[
+      {
+        "name":"header-2"
+      }
+    ]
+}
+{% endschema %}

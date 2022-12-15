@@ -1,50 +1,120 @@
 <style>
-.para-1{
-    padding: 15px 0;
+  html {
+    --primary-color: rgb(40, 100, 120);
+    --white: rgb(280,280,280);
+    --black: rgb(0,0,0);
+  }
+  .bg-blue{
+  Background: var(--primary-color);
+  color:var(--white)
+  }
+  .bg-black{
+  Background: var(--black);
+  color:var(--white)
+  }
+  .bg-white{
+  Background: var(--white);
+  color:var(--black)
+  }
+  .blue{
+  color: var(--primary-color)
+  }
+  .black{
+  color: var(--black)
+  }
+  .white{
+  color: var(--white)
+  }
+  .top-bar{
+  border:1px solid #c4c1c0;
+  }
+  .para-1 {
+    padding: 5px 10px;
     margin: 0;
     letter-spacing: 0.1rem;
     font-size: 1.8rem;
     font-weight: 500;
-    text-transform:capitalize;
-}
-
+    text-transform: capitalize;
+  }
 </style>
 
-<div class="">
-    <p class="para-1 {{section.settings.text_alignment}}">{{section.settings.top_bar_text}}</p>
+<div class="top-bar {{section.settings.bg_color_scheme}}">
+  <p class="para-1 {{section.settings.text_alignment}}">{{ section.settings.top_bar_text }}</p>
 </div>
 
 {% schema %}
 {
-  "name": "top bar",
+  "name": "Top Bar",
   "tag": "section",
   "settings": [
     {
       "type": "text",
       "id": "top_bar_text",
       "label": "Text",
-      "default":"hello"
+      "default": "hello"
     },
     {
-        "type": "select",
-        "id": "text_alignment",
-        "options": [
-          {
-            "value": "left",
-            "label":"left"
-          },
-          {
-            "value": "center",
-            "label":"center"
-          },
-          {
-            "value": "right",
-            "label":"right"
-          }
-        ],
-        "default": "center",
-        "label":"center"
-      }
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "center",
+      "label": "Text Align"
+    },
+    {
+      "type": "select",
+      "id": "bg_color_scheme",
+      "label":"Background Color",
+      
+      "options": [
+        {
+          "value": "bg-blue",
+          "label": "blue"
+        },
+        {
+          "value": "bg-white",
+          "label": "white"
+        },
+        {
+          "value": "bg-black",
+          "label": "black"
+        }
+      ],
+      "default":"bg-white"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label":"Text Color",
+      
+      "options": [
+        {
+          "value": "blue",
+          "label": "blue"
+        },
+        {
+          "value": "white",
+          "label": "white"
+        },
+        {
+          "value": "black",
+          "label": "black"
+        }
+      ],
+      "default":"black"
+    }
   ],
   "presets": [
     {

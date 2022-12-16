@@ -1,0 +1,94 @@
+<style>
+  .btn-1 {
+    padding: 20px;
+    background: black;
+    color: white;
+  }
+</style>
+
+{{ section.settings.image_banner2 | image_url: width: 1040 | image_tag }}
+<div class="image-banner-content">
+  <h2>{{ section.settings.main_banner_h2 }}</h2>
+  <h1>{{ section.settings.main_banner_h1 }}</h1>
+  <p>{{ section.settings.main_banner_para }}</p>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'buttons' -%}
+        <div class="banner-buttons">
+          <a class="btn-1" href="{{block.settings.button_One}}">{{ block.settings.button_One }}</a>
+          <a href="{{block.settings.button_Tow}}">{{ block.settings.button_Tow }}</a>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Sec Image Banner2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_banner2",
+      "label": "Select Image"
+    },
+    {
+      "type": "text",
+      "id": "main_banner_h2",
+      "label": "First Heading Here",
+      "default": "new arrival"
+    },
+    {
+      "type": "text",
+      "id": "main_banner_h1",
+      "label": "Second Heading Here",
+      "default": "Simple Cotton T-Shirts"
+    },
+    {
+      "type": "text",
+      "id": "main_banner_para",
+      "label": "Paragraph Here",
+      "default": "Casual line. Short design. 100% suede leather. Backstitched elbow patche"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "buttons",
+      "name": "buttons",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Button One",
+          "id": "button_One",
+          "default": "MENS"
+        },
+        {
+          "type": "url",
+          "label": "button One Link",
+          "id": "button_One_Link"
+        },
+        {
+          "type": "text",
+          "label": "Button Tow",
+          "id": "button_Tow",
+          "default": "WOMENS"
+        },
+        {
+          "type": "url",
+          "label": "button Tow Link",
+          "id": "button_Tow_Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sec Image Banner2",
+      "blocks": [
+        {
+          "type": "buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

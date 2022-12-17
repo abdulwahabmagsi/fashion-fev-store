@@ -1,26 +1,24 @@
-<style>
-  .btn-1 {
-    padding: 20px;
-    background: black;
-    color: white;
-  }
-</style>
+{{ 'sec-image-banner2.css' | asset_url | stylesheet_tag }}
+<style></style>
+<div class="banner-image-p {{section.settings.image_banner_height}}">
+  {{ section.settings.image_banner2 | image_url: width: 1200 | image_tag }}
 
-{{ section.settings.image_banner2 | image_url: width: 1040 | image_tag }}
-<div class="image-banner-content">
-  <h2>{{ section.settings.main_banner_h2 }}</h2>
-  <h1>{{ section.settings.main_banner_h1 }}</h1>
-  <p>{{ section.settings.main_banner_para }}</p>
-  {%- for block in section.blocks -%}
-    {%- case block.type -%}
-      {%- when 'buttons' -%}
-        <div class="banner-buttons">
-          <a class="btn-1" href="{{block.settings.button_One}}">{{ block.settings.button_One }}</a>
-          <a href="{{block.settings.button_Tow}}">{{ block.settings.button_Tow }}</a>
-        </div>
-    {% endcase %}
-  {% endfor %}
+  <div class="image-banner-content">
+    <h2>{{ section.settings.main_banner_h2 }}</h2>
+    <h1>{{ section.settings.main_banner_h1 }}</h1>
+    <p>{{ section.settings.main_banner_para }}</p>
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'buttons' -%}
+          <div class="banner-buttons">
+            <a class="btn-1" href="{{block.settings.button_One}}">{{ block.settings.button_One }}</a>
+            {% comment %} <a href="{{block.settings.button_Tow}}">{{ block.settings.button_Tow }}</a> {% endcomment %}
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
 </div>
+
 {% schema %}
 {
   "name": "Sec Image Banner2",
@@ -29,8 +27,34 @@
     {
       "type": "image_picker",
       "id": "image_banner2",
+     
       "label": "Select Image"
     },
+    {
+      "type": "select",
+      "id": "image_banner_height",
+      "label": "Image Height",
+      "default": "large_image",
+      "options": [
+        {
+          "value": "small_image",
+          "label": "small"
+        },
+        {
+          "value": "medium_image",
+          "label": "medium"
+        },
+        {
+          "value": "large_image",
+          "label": "large"
+        },
+        {
+          "value": "xl_large_image",
+          "label": "Xl Large"
+        }
+      ]
+    },
+  
     {
       "type": "text",
       "id": "main_banner_h2",
@@ -65,18 +89,8 @@
           "type": "url",
           "label": "button One Link",
           "id": "button_One_Link"
-        },
-        {
-          "type": "text",
-          "label": "Button Tow",
-          "id": "button_Tow",
-          "default": "WOMENS"
-        },
-        {
-          "type": "url",
-          "label": "button Tow Link",
-          "id": "button_Tow_Link"
         }
+     
       ]
     }
   ],

@@ -1,9 +1,12 @@
 {{ 'sec-image-banner2.css' | asset_url | stylesheet_tag }}
-<style></style>
-<div class="banner-image-p {{section.settings.image_banner_height}}">
-  {{ section.settings.image_banner2 | image_url: width: 1200 | image_tag }}
 
-  <div class="image-banner-content">
+<div class="banner-image-p {{section.settings.image_banner_height}}">
+  {%- if section.settings.image_banner2 != blank -%}
+    {{ section.settings.image_banner2 | image_url: width: 1200 | image_tag }}
+    {%- else -%}
+    {{ images['man-in-suit-on-stairs.jpg'] | image_url: width: 1200 | image_tag }}
+  {%- endif -%}
+  <div class="image-banner-content {{section.settings.content_position}}">
     <h2>{{ section.settings.main_banner_h2 }}</h2>
     <h1>{{ section.settings.main_banner_h1 }}</h1>
     <p>{{ section.settings.main_banner_para }}</p>
@@ -12,7 +15,8 @@
         {%- when 'buttons' -%}
           <div class="banner-buttons">
             <a class="btn-1" href="{{block.settings.button_One}}">{{ block.settings.button_One }}</a>
-            {% comment %} <a href="{{block.settings.button_Tow}}">{{ block.settings.button_Tow }}</a> {% endcomment %}
+            <a class="btn-1" href="{{block.settings.button_Two}}">{{ block.settings.button_Two }}</a>
+        
           </div>
       {% endcase %}
     {% endfor %}
@@ -27,14 +31,14 @@
     {
       "type": "image_picker",
       "id": "image_banner2",
-     
       "label": "Select Image"
     },
+
     {
       "type": "select",
       "id": "image_banner_height",
       "label": "Image Height",
-      "default": "large_image",
+      "default": "medium_image",
       "options": [
         {
           "value": "small_image",
@@ -54,7 +58,53 @@
         }
       ]
     },
-  
+    {
+      "type": "select",
+      "id": "content_position",
+      "label":"positions",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top Center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom Center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "center-left",
+          "label": "Center Left"
+        },
+        {
+          "value": "center-right",
+          "label": "Center Right"
+        }
+        
+      ],
+      "default":"center-left"
+    },
+
+
     {
       "type": "text",
       "id": "main_banner_h2",
@@ -89,8 +139,18 @@
           "type": "url",
           "label": "button One Link",
           "id": "button_One_Link"
+        },
+        {
+          "type": "text",
+          "label": "Button Two",
+          "id": "button_Two",
+          "default": "WOMENS"
+        },
+        {
+          "type": "url",
+          "label": "button Two Link",
+          "id": "button_Two_Link"
         }
-     
       ]
     }
   ],

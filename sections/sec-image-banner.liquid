@@ -7,9 +7,9 @@
     {{ images['man-in-suit-on-stairs.jpg'] | image_url: width: 1200 | image_tag }}
   {%- endif -%}
   <div class="image-banner-content {{section.settings.content_position}}">
-    <h2>{{ section.settings.main_banner_h2 }}</h2>
-    <h1>{{ section.settings.main_banner_h1 }}</h1>
-    <p>{{ section.settings.main_banner_para }}</p>
+    <h2 class="main-h2">{{ section.settings.main_banner_h2 }}</h2>
+    <h1 class="main-h1">{{ section.settings.main_banner_h1 }}</h1>
+    <p class="para-2">{{ section.settings.main_banner_para }}</p>
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'buttons' -%}
@@ -73,6 +73,7 @@
         },
         {
           "value": "top-right",
+
           "label": "Top Right"
         },
         {
@@ -88,7 +89,7 @@
           "label": "Bottom Right"
         },
         {
-          "value": "center",
+          "value": "position-center",
           "label": "Center"
         },
         {
@@ -101,7 +102,7 @@
         }
         
       ],
-      "default":"center-left"
+      "default":"position-center"
     },
 
 

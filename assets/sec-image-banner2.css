@@ -1,4 +1,4 @@
-h1 {
+.main-h1 {
     font-size: 80px;
     color: white;
     line-height: 90px;
@@ -8,7 +8,7 @@ padding-bottom: 40px;
 margin: 0 !important;
 }
 
-h2 {
+.main-h2 {
     font-size: 22px;
     color: white;
     line-height: 60px;
@@ -19,7 +19,7 @@ h2 {
 margin: 0 !important;
 }
 
-p {
+.para-2{
     font-size: 14px;
     line-height: 18px;
     color: white;
@@ -45,7 +45,6 @@ padding: 50px;
 .banner-buttons {
     display: flex;
     align-items: center;
-    /* margin-top: 30px; */
 }
 
 .btn-1 {
@@ -126,7 +125,7 @@ padding: 50px;
     align-items: end;
 }
 
-.center {
+.position-center {
     top: 50%;
     left: 50%;
     text-align: center;

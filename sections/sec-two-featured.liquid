@@ -1,0 +1,66 @@
+{{ 'sec-featured.css' | asset_url | stylesheet_tag }}
+
+<section class="sec-featured">
+    {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when 'discount' -%}
+           <div class="lg-col">
+            <div>{{block.settings.card_image | image_url : width:120 | image_tag}} </div>
+            <h3>{{block.settings.card_title}}</h3>
+            <p>{{block.settings.card_discription}}</p>
+        </div>
+            {%- endcase -%}
+        {%- endfor -%}
+</section>
+
+{%- schema -%}
+{
+  "name": "Sec Featured",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sec_heading",
+      "label": "Main Heading",
+      "default": "hello world"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "discount",
+      "type":"discount",
+      
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "card image"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "title",
+          "default": "QUALITY MATERIALS"
+        },
+        {
+          "type": "text",
+          "id": "card_discription",
+          "label": "discription",
+          "default": "Gurantee 100% polyurethane and 100% polyester"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sec Featured",
+     
+      "blocks":[
+        {
+            "type":"discount"
+        }
+      ]
+    }
+  ]
+}
+{%- endschema -%}

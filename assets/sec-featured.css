@@ -1,0 +1,13 @@
+.sec-featured{
+    display: flex;
+}
+.sec-featured .lg-col{
+width: 33%;
+}
+.sec-featured .md-col{
+width: 50%;
+}
+.sec-featured .sm-col{
+width: 100%;
+text-align: center;
+}

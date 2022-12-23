@@ -2,9 +2,9 @@
 
 <div class="banner-image-p {{section.settings.image_banner_height}}">
   {%- if section.settings.image_banner2 != blank -%}
-    {{ section.settings.image_banner2 | image_url: width: 1200 | image_tag }}
+    {{ section.settings.image_banner2 | image_url: width: 1500 | image_tag }}
     {%- else -%}
-    {{ images['man-in-suit-on-stairs.jpg'] | image_url: width: 1200 | image_tag }}
+    {{ images['man-in-suit-on-stairs.jpg'] | image_url: width: 1500 | image_tag }}
   {%- endif -%}
   <div class="image-banner-content {{section.settings.content_position}}">
     <h2 class="main-h2">{{ section.settings.main_banner_h2 }}</h2>
@@ -159,6 +159,12 @@
     {
       "name": "Sec Image Banner2",
       "blocks": [
+        {
+          "type": "buttons"
+        },
+        {
+          "type": "buttons"
+        },
         {
           "type": "buttons"
         }

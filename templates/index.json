@@ -1,83 +1,137 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "Sec_Image_Banner2": {
+      "type": "sec-image-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "banner_heading_one": {
+          "type": "banner_heading_one",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "main_banner_h2": "new arrival"
           }
         },
-        "text": {
-          "type": "text",
+        "banner_heading_two": {
+          "type": "banner_heading_two",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "main_banner_h1": "Simple Cotton T-Shirts"
           }
         },
-        "button": {
-          "type": "buttons",
+        "banner_para": {
+          "type": "banner_para",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "main_banner_para": "Casual line. Short design. 100% suede leather. Backstitched elbow patche"
+          }
+        },
+        "banner_buttons": {
+          "type": "banner_buttons",
+          "settings": {
+            "main_banner_h2": "new arrival"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "image": "{{ shop.brand.cover_image }}",
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "adapt_height_first_image": false,
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+        "banner_heading_one",
+        "banner_heading_two",
+        "banner_para",
+        "banner_buttons"
+      ]
     },
-    "rich_text": {
-      "type": "rich-text",
+    "sec_for_offers": {
+      "type": "sec-for-offers",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "<p>Talk about your brand<\/p>",
-            "heading_size": "h1"
-          }
+        "discount1": {
+          "type": "discount"
         },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
+        "discount2": {
+          "type": "discount"
+        },
+        "discount3": {
+          "type": "discount"
         }
       },
-      "block_order": [
-        "heading",
-        "text"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
+      "block_order":[
+        "discount1",
+        "discount2",
+        "discount3"
+      ]
     },
+    // "image_banner": {
+    //   "type": "image-banner",
+    //   "blocks": {
+    //     "heading": {
+    //       "type": "heading",
+    //       "settings": {
+    //         "heading": "Image banner",
+    //         "heading_size": "h0"
+    //       }
+    //     },
+    //     "text": {
+    //       "type": "text",
+    //       "settings": {
+    //         "text": "Give customers details about the banner image(s) or content on the template.",
+    //         "text_style": "body"
+    //       }
+    //     },
+    //     "button": {
+    //       "type": "buttons",
+    //       "settings": {
+    //         "button_label_1": "Shop all",
+    //         "button_link_1": "shopify:\/\/collections\/all",
+    //         "button_style_secondary_1": true,
+    //         "button_label_2": "",
+    //         "button_link_2": "",
+    //         "button_style_secondary_2": false
+    //       }
+    //     }
+    //   },
+    //   "block_order": [
+    //     "heading",
+    //     "text",
+    //     "button"
+    //   ],
+    //   "settings": {
+    //     "image": "{{ shop.brand.cover_image }}",
+    //     "image_overlay_opacity": 40,
+    //     "image_height": "large",
+    //     "adapt_height_first_image": false,
+    //     "desktop_content_position": "bottom-center",
+    //     "show_text_box": false,
+    //     "desktop_content_alignment": "center",
+    //     "color_scheme": "background-1",
+    //     "mobile_content_alignment": "center",
+    //     "stack_images_on_mobile": false,
+    //     "show_text_below": false
+    //   }
+    // },
+    // "rich_text": {
+    //   "type": "rich-text",
+    //   "blocks": {
+    //     "heading": {
+    //       "type": "heading",
+    //       "settings": {
+    //         "heading": "<p>Talk about your brand<\/p>",
+    //         "heading_size": "h1"
+    //       }
+    //     },
+    //     "text": {
+    //       "type": "text",
+    //       "settings": {
+    //         "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+    //       }
+    //     }
+    //   },
+    //   "block_order": [
+    //     "heading",
+    //     "text"
+    //   ],
+    //   "settings": {
+    //     "desktop_content_position": "center",
+    //     "content_alignment": "center",
+    //     "color_scheme": "background-1",
+    //     "full_width": true,
+    //     "padding_top": 40,
+    //     "padding_bottom": 0
+    //   }
+    // },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -212,8 +266,10 @@
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
+    "Sec_Image_Banner2",
+    "sec_for_offers",
+    // "image_banner",
+    // "rich_text",
     "featured_collection",
     "collage",
     "video",

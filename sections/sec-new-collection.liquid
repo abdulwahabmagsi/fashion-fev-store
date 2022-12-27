@@ -1,0 +1,52 @@
+<style>
+    .row{
+        display:flex;
+    }
+    .col-lg-4{
+        width: 33.33%;
+    }
+    .col-lg-8{
+        width: 66.66%;
+    }
+    .collection-card{
+        height: 450px;
+    }
+</style>
+
+
+<h1>new collection</h1>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="collection-card">
+                    
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="collection-card">
+                    <h1>new colloction</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name":"NEW COLLECTION",
+    "settings":[
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+    ],
+    "presets":[
+        {
+            "name":"NEW COLLOECTION"
+        }
+    ]
+}
+{% endschema %}

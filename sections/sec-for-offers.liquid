@@ -1,0 +1,113 @@
+{{ 'sec-for-offers.css' | asset_url | stylesheet_tag }}
+
+<section class="sec-for-offers">
+  <h1>{{ section.settings.sec_heading }}</h1>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'discount' -%}
+        <div class="lg-col {{block.settings.card_position_style}}">
+          <div>
+            {%- if block.settings.card_image != blank -%}
+              {% comment %} {%- capture sizes -%}(min-width: 990px) {% if section.blocks.size <= 2 %}710px{% else %}550px{% endif %}, (min-width: 750px) {% if section.blocks.size == 1 %}710px{% else %}550px{% endif %}, calc(100vw - 30px){%- endcapture -%} {% endcomment %}
+              {{ block.settings.card_image | image_url: width: 60 | image_tag }}
+            {%- else -%}
+              {{ images['tshirt.png'] | image_url: width: 60 | image_tag }}
+            {%- endif -%}
+          </div>
+          <div class="content">
+            <h3>{{ block.settings.card_title }}</h3>
+            <p>{{ block.settings.card_discription }}</p>
+          </div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</section>
+
+{%- schema -%}
+{
+  "name": "Sec For Offers",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sec_heading",
+      "label": "Main Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "discount",
+      "type": "discount",
+      
+
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "card image"
+        },
+
+        {
+          "type": "select",
+          "id": "card_image_width",
+          "options": [
+            {
+              "value": "small_image",
+              "label": "small"
+            },
+            {
+              "value": "medium_image",
+              "label": "medium"
+            },
+            {
+              "value": "large_image",
+              "label": "large"
+            }
+          ],
+          "default": "large_image",
+          "label": "Image Width"
+        },
+        {
+          "type": "select",
+          "id": "card_position_style",
+          "label": "position style",
+          "options": [
+            {
+              "value": "style_1",
+              "label": "style_1"
+            },
+            {
+              "value": "style_2",
+              "label": "style_2"
+            }
+          ]
+        },
+
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "title",
+          "default": "QUALITY MATERIALS"
+        },
+        {
+          "type": "text",
+          "id": "card_discription",
+          "label": "discription",
+          "default": "Gurantee 100% polyurethane and 100% polyester"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sec For Offers",
+
+      "blocks": [
+        {
+          "type": "discount"
+        }
+      ]
+    }
+  ]
+}
+{%- endschema -%}

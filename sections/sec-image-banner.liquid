@@ -3,20 +3,22 @@
 <div class="banner-image-p {{section.settings.image_banner_height}}">
   {%- if section.settings.image_banner2 != blank -%}
     {{ section.settings.image_banner2 | image_url: width: 1500 | image_tag }}
-    {%- else -%}
+  {%- else -%}
     {{ images['man-in-suit-on-stairs.jpg'] | image_url: width: 1500 | image_tag }}
   {%- endif -%}
   <div class="image-banner-content {{section.settings.content_position}}">
-    <h2 class="main-h2">{{ section.settings.main_banner_h2 }}</h2>
-    <h1 class="main-h1">{{ section.settings.main_banner_h1 }}</h1>
-    <p class="para-2">{{ section.settings.main_banner_para }}</p>
     {%- for block in section.blocks -%}
       {%- case block.type -%}
-        {%- when 'buttons' -%}
+        {%- when 'banner_heading_one' -%}
+          <h2 class="main-h2">{{ block.settings.main_banner_h2 }}</h2>
+        {%- when 'banner_heading_two' -%}
+          <h1 class="main-h1">{{ block.settings.main_banner_h1 }}</h1>
+        {%- when 'banner_para' -%}
+          <p class="para-2">{{ block.settings.main_banner_para }}</p>
+        {%- when 'banner_buttons' -%}
           <div class="banner-buttons">
             <a class="btn-1" href="{{block.settings.button_One}}">{{ block.settings.button_One }}</a>
             <a class="btn-1" href="{{block.settings.button_Two}}">{{ block.settings.button_Two }}</a>
-        
           </div>
       {% endcase %}
     {% endfor %}
@@ -25,7 +27,7 @@
 
 {% schema %}
 {
-  "name": "Sec Image Banner2",
+  "name": "Sec_Image_Banner2",
   "tag": "section",
   "settings": [
     {
@@ -51,17 +53,13 @@
         {
           "value": "large_image",
           "label": "large"
-        },
-        {
-          "value": "xl_large_image",
-          "label": "Xl Large"
         }
       ]
     },
     {
       "type": "select",
       "id": "content_position",
-      "label":"positions",
+      "label": "positions",
       "options": [
         {
           "value": "top-left",
@@ -100,35 +98,54 @@
           "value": "center-right",
           "label": "Center Right"
         }
-        
       ],
-      "default":"position-center"
-    },
-
-
-    {
-      "type": "text",
-      "id": "main_banner_h2",
-      "label": "First Heading Here",
-      "default": "new arrival"
-    },
-    {
-      "type": "text",
-      "id": "main_banner_h1",
-      "label": "Second Heading Here",
-      "default": "Simple Cotton T-Shirts"
-    },
-    {
-      "type": "text",
-      "id": "main_banner_para",
-      "label": "Paragraph Here",
-      "default": "Casual line. Short design. 100% suede leather. Backstitched elbow patche"
+      "default": "position-center"
     }
   ],
   "blocks": [
     {
-      "type": "buttons",
-      "name": "buttons",
+      "type": "banner_heading_one",
+      "name": "banner_heading_one",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "main_banner_h2",
+          "label": "First Heading Here",
+          "default": "new arrival"
+        }
+      ]
+    },
+    {
+      "type": "banner_heading_two",
+      "name": "banner_heading_two",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "main_banner_h1",
+          "label": "Second Heading Here",
+          "default": "Simple Cotton T-Shirts"
+        }
+      ]
+    },
+    {
+      "type": "banner_para",
+      "name": "banner_para",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "main_banner_para",
+          "label": "Paragraph Here",
+          "default": "Casual line. Short design. 100% suede leather. Backstitched elbow patche"
+        }
+      ]
+    },
+    {
+      "type": "banner_buttons",
+      "name": "banner_buttons",
+      "limit": 1,
       "settings": [
         {
           "type": "text",
@@ -157,16 +174,19 @@
   ],
   "presets": [
     {
-      "name": "Sec Image Banner2",
+      "name": "Sec_Image_Banner2",
       "blocks": [
         {
-          "type": "buttons"
+          "type": "banner_heading_one"
         },
         {
-          "type": "buttons"
+          "type": "banner_heading_two"
         },
         {
-          "type": "buttons"
+          "type": "banner_para"
+        },
+        {
+          "type": "banner_buttons"
         }
       ]
     }

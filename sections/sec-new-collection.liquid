@@ -1,52 +1,84 @@
 <style>
-    .row{
-        display:flex;
-    }
-    .col-lg-4{
-        width: 33.33%;
-    }
-    .col-lg-8{
-        width: 66.66%;
-    }
-    .collection-card{
-        height: 450px;
-    }
+  .row {
+    display: flex;
+  }
+  .col-lg-4 {
+    width: 33.33%;
+  }
+  .col-lg-8 {
+    width: 66.66%;
+  }
+  
 </style>
 
-
-<h1>new collection</h1>
+<h1>{{ section.settings.collection_heading }}</h1>
 
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="collection-card">
-                    
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="collection-card">
-                    <h1>new colloction</h1>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="collection-card">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when 'collection' -%}
+                        {% render 'card-collection',
+                            card_collection: block.settings.collection
+                        %}
+                {%- endcase -%}
+            {%- endfor -%}
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 {% schema %}
 {
-    "name":"NEW COLLECTION",
-    "settings":[
-        {
-            "type": "collection",
-            "id": "collection",
-            "label": "Collection"
+  "name": "NEW COLLECTION",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection_heading",
+      "label":"heading",
+      "default":"collection heading"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "product",
+        "name": "product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "product"
           }
-    ],
-    "presets":[
+        ]
+      },
+    {
+      "type": "collection",
+      "name": "collection",
+      "settings": [
         {
-            "name":"NEW COLLOECTION"
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
         }
-    ]
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "NEW COLLOECTION",
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

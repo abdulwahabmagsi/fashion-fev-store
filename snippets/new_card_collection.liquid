@@ -1,0 +1,20 @@
+{{ section.settings.collection_card_image | image_url: width: 500 | image_tag }}
+
+{% schema %}
+{
+  "name": "collection card",
+  "tag": "card_collection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "collection_card_image",
+      "label": "background image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "collection card"
+    }
+  ]
+}
+{% endschema %}

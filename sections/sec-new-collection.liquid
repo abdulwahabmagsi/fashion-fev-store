@@ -1,33 +1,18 @@
-<style>
-  .row {
-    display: flex;
-  }
-  .col-lg-4 {
-    width: 33.33%;
-  }
-  .col-lg-8 {
-    width: 66.66%;
-  }
-  
-</style>
+{{ 'new_collection.css' | asset_url | stylesheet_tag }}
 
 <h1>{{ section.settings.collection_heading }}</h1>
 
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-4">
-        <div class="collection-card">
-            {%- for block in section.blocks -%}
-                {%- case block.type -%}
-                    {%- when 'collection' -%}
-                        {% render 'card-collection',
-                            card_collection: block.settings.collection
-                        %}
-                {%- endcase -%}
-            {%- endfor -%}
-        </div>
-      </div>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when 'collection' -%}
+                {% render 'new_card_collection',
+                    card_collection: block.settings.collection
+                %}
+        {%- endcase -%}
+    {%- endfor -%}
     </div>
   </div>
 </section>
@@ -46,17 +31,6 @@
     }
   ],
   "blocks": [
-    {
-        "type": "product",
-        "name": "product",
-        "settings": [
-          {
-            "type": "product",
-            "id": "product",
-            "label": "product"
-          }
-        ]
-      },
     {
       "type": "collection",
       "name": "collection",

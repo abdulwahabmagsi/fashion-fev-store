@@ -1,20 +1,52 @@
-{{ section.settings.collection_card_image | image_url: width: 500 | image_tag }}
+{{ 'new_collection.css' | asset_url | stylesheet_tag }}
 
-{% schema %}
-{
-  "name": "collection card",
-  "tag": "card_collection",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "collection_card_image",
-      "label": "background image"
-    }
-  ],
-  "presets": [
-    {
-      "name": "collection card"
-    }
-  ]
-}
-{% endschema %}
+
+  <div class="col-lg-5">
+    <div class="card_collection">
+      <div class="card_collection_image">
+        {% if card_collection.featured_image != blank %}
+          <img src="{{ card_collection.featured_image | image_url}}">
+        {% else %}
+          <img src="{{ images['men-collection.jpg'] | image_url}}">
+        {% endif %}
+      </div>
+      <div class="card_collection_content">
+        <div class="card_collection_headings">
+          {% if card_collection.title != blank %}
+            <h2>{{ card_collection.title }}</h2>
+            <h1>{{ card_collection.title }}</h1>
+
+          {% else %}
+            <h2>limited editon</h2>
+            <h1>Minimalist Bags</h1>
+          {% endif %}
+        </div>
+        <button class="collection_btn">explore now</button>
+      </div>
+    </div>
+  </div>
+  {% comment %} <div class="col-lg-7">
+    <div class="card_collection">
+      <div class="card_collection_image">
+        {% if card_collection.featured_image != blank %}
+          <img src="{{ card_collection.featured_image | image_url}}">
+        {% else %}
+          <img src="{{ images['men-collection.jpg'] | image_url}}">
+        {% endif %}
+      </div>
+      <div class="card_collection_content">
+        <div class="card_collection_headings">
+          {% if card_collection.title != blank %}
+            <h2>{{ card_collection.title }}</h2>
+            <h1>{{ card_collection.title }}</h1>
+
+          {% else %}
+            <h2>limited editon</h2>
+            <h1>Minimalist Bags</h1>
+          {% endif %}
+        </div>
+        <button class="collection_btn">explore now</button>
+      </div>
+    </div>
+  </div> {% endcomment %}
+

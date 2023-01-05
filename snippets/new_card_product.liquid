@@ -1,0 +1,52 @@
+{{ 'new_card_product.css' | asset_url | stylesheet_tag }}
+
+
+  <div class="col-lg-5">
+    <div class="card_product">
+      <div class="card_product_image">
+        {% if card_product.featured_media != blank %}
+          <img src="{{ card_product.featured_media | image_url}}">
+        {% else %}
+          <img src="{{ images['men-collection.jpg'] | image_url}}">
+        {% endif %}
+      </div>
+      <div class="card_product_content">
+        <div class="card_product_headings">
+          {% if card_product.title != blank %}
+            <h2>{{ card_product.title }}</h2>
+            <h1>{{ card_product.title }}</h1>
+
+          {% else %}
+            <h2>limited editon</h2>
+            <h1>Minimalist Bags</h1>
+          {% endif %}
+        </div>
+        <button class="product_btn">explore now</button>
+      </div>
+    </div>
+  </div>
+  {% comment %} <div class="col-lg-7">
+    <div class="card_product">
+      <div class="card_collection_image">
+        {% if card_collection.featured_image != blank %}
+          <img src="{{ card_collection.featured_image | image_url}}">
+        {% else %}
+          <img src="{{ images['men-collection.jpg'] | image_url}}">
+        {% endif %}
+      </div>
+      <div class="card_collection_content">
+        <div class="card_collection_headings">
+          {% if card_collection.title != blank %}
+            <h2>{{ card_collection.title }}</h2>
+            <h1>{{ card_collection.title }}</h1>
+
+          {% else %}
+            <h2>limited editon</h2>
+            <h1>Minimalist Bags</h1>
+          {% endif %}
+        </div>
+        <button class="collection_btn">explore now</button>
+      </div>
+    </div>
+  </div> {% endcomment %}
+

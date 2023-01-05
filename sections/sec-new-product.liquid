@@ -1,0 +1,58 @@
+{{ 'new_product.css' | asset_url | stylesheet_tag }}
+
+<h1>{{ section.settings.product_heading }}</h1>
+
+<section>
+  <div class="container">
+    <div class="row">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when 'product' -%}
+                {% render 'new_card_product',
+                    card_product: block.settings.product
+                %}
+        {%- endcase -%}
+    {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "new product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_heading",
+      "label":"heading",
+      "default":"product heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "new product",
+      "blocks": [
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,12 +1,27 @@
 <header>
     <div class="container">
-      
+      <nav class="header__inline-menu">
+        <ul class="list-menu list-menu--inline" role="list">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+                <a href="{{ link.url }}" class="header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                  <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                </a>
+            </li>
+          </ul>
+      </nav>
     </div>
 </header>
-{% schema %}
+{%- schema -%}
 {
-    "name":"header-2",
+    "name":"header_2",
+    "tag":"section",
     "settings":[
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      },
         {
             "type":"select",
             "id":"bg_color_scheme",
@@ -14,8 +29,8 @@
             "default":"bg-white",
             "options":[
                 {
-                    "value": "bg-blue",
-                    "label": "blue"
+                    "value": "bg-yellow",
+                    "label": "yellow"
                   },
                   {
                     "value": "bg-white",
@@ -34,4 +49,4 @@
       }
     ]
 }
-{% endschema %}
+{%- endschema -%}

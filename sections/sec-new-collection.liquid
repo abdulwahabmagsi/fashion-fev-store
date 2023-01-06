@@ -1,18 +1,28 @@
 {{ 'new_collection.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .sec-collection {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+{%- endstyle -%}
 
-<h1>{{ section.settings.collection_heading }}</h1>
-
-<section>
+<section class="sec-collection {{section.settings.bg_color_scheme}} {{section.settings.color_scheme}}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'main_heading' -%}
+        <h1 class="{{ block.settings.color_scheme }} {{ block.settings.text_alignment }} {{ block.settings.font_size }} {{ block.settings.text_transform }}">
+          {{ block.settings.collection_heading }}
+        </h1>
+    {%- endcase -%}
+  {%- endfor -%}
   <div class="container">
     <div class="row">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
-            {%- when 'collection' -%}
-                {% render 'new_card_collection',
-                    card_collection: block.settings.collection
-                %}
+          {%- when 'collection' -%}
+            {% render 'new_card_collection', card_collection: block.settings.collection %}
         {%- endcase -%}
-    {%- endfor -%}
+      {%- endfor -%}
     </div>
   </div>
 </section>
@@ -24,13 +34,162 @@
   "class": "section",
   "settings": [
     {
-      "type": "text",
-      "id": "collection_heading",
-      "label":"heading",
-      "default":"collection heading"
+      "type": "select",
+      "id": "bg_color_scheme",
+      "label": "Background Color",
+
+      "options": [
+        {
+          "value": "bg-yellow",
+          "label": "yellow"
+        },
+        {
+          "value": "bg-white",
+          "label": "white"
+        },
+        {
+          "value": "bg-black",
+          "label": "black"
+        }
+      ],
+      "default": "bg-white"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Text Color",
+
+      "options": [
+        {
+          "value": "yellow",
+          "label": "yellow"
+        },
+        {
+          "value": "white",
+          "label": "white"
+        },
+        {
+          "value": "black",
+          "label": "black"
+        }
+      ],
+      "default": "black"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "padding bottom",
+      "default": 36
     }
   ],
   "blocks": [
+    {
+      "type": "main_heading",
+      "name": "main_heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection_heading",
+          "label": "heading"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            },
+            {
+              "value": "center",
+              "label": "center"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ],
+          "default": "center",
+          "label": "Text Align"
+        },
+        {
+          "type": "select",
+          "id": "font_size",
+          "label": "font size",
+          "options": [
+            {
+              "value": "size_h1",
+              "label": "h1"
+            },
+            {
+              "value": "size_h2",
+              "label": "h2"
+            },
+            {
+              "value": "size_h3",
+              "label": "h3"
+            }
+          ],
+          "default": "size_h1"
+        },
+        {
+          "type": "select",
+          "id": "text_transform",
+          "label": "text transform",
+          "options": [
+            {
+              "value": "capitilize",
+              "label": "capitilize"
+            },
+            {
+              "value": "uppercase",
+              "label": "uppercase"
+            },
+            {
+              "value": "lowercase",
+              "label": "lowercase"
+            }
+          ],
+          "default": "capitilize"
+        },
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "label": "Text Color",
+
+          "options": [
+            {
+              "value": "yellow",
+              "label": "yellow"
+            },
+            {
+              "value": "white",
+              "label": "white"
+            },
+            {
+              "value": "black",
+              "label": "black"
+            }
+          ],
+          "default": "black"
+        }
+      ]
+    },
+
     {
       "type": "collection",
       "name": "collection",
@@ -50,6 +209,9 @@
       "blocks": [
         {
           "type": "collection"
+        },
+        {
+          "type": "main_heading"
         }
       ]
     }

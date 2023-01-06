@@ -1,3 +1,38 @@
+html {
+  --primary-color:rgb(254,226,167);
+  --white: rgb(280,280,280);
+  --black: rgb(0,0,0);
+}
+.bg-yellow{
+Background: var(--primary-color);
+color:var(--white)!important;
+}
+.bg-black{
+Background: var(--black);
+color:var(--white)!important;
+}
+.bg-white{
+Background: var(--white);
+color:var(--black)
+}
+.yellow{
+color: var(--primary-color)
+}
+.black{
+color: var(--black)
+}
+.white{
+color: var(--white)
+}
+.left{
+text-align: left;
+}
+.center{
+text-align: center;
+}
+.right{
+text-align: right;
+}
 .row{
     display: flex !important;
     width: 100% !important;
@@ -15,12 +50,37 @@
   .col-lg-5{
     flex-basis: 41.66% !important;
 }
+.col-lg-6{
+    flex-basis: 50% !important;
+}
 .col-lg-7{
     flex-basis: 58.33% !important;
 }
 .col-lg-12{
   flex-basis: 100% !important;
 }
+.size_h1{
+  font-size: 40px;
+  line-height: 48px; 
+ }
+ .size_h2{
+  font-size: 30px;
+  line-height: 38px; 
+ }
+ .size_h3{
+  font-size: 20px;
+  line-height: 28px; 
+ }
+ .capitilize{
+   text-transform: capitalize;
+ }
+ .uppercase{
+   text-transform:uppercase;
+ }
+ .lowercase{
+   text-transform: lowercase;
+ }
+ 
 .card_collection{
     position: relative;
 }

@@ -1,10 +1,10 @@
 <style>
   html {
-    --primary-color: rgb(40, 100, 120);
+    --primary-color:rgb(254,226,167);
     --white: rgb(280,280,280);
     --black: rgb(0,0,0);
   }
-  .bg-blue{
+  .bg-yellow{
   Background: var(--primary-color);
   color:var(--white)
   }
@@ -16,7 +16,7 @@
   Background: var(--white);
   color:var(--black)
   }
-  .blue{
+  .yellow{
   color: var(--primary-color)
   }
   .black{
@@ -35,12 +35,17 @@
     font-size: 1.8rem;
     font-weight: 500;
     text-transform: capitalize;
+    text-decoration: none;
+    color: var(--black)
+
   }
 
 </style>
 
 <div class="top-bar {{section.settings.bg_color_scheme}}">
-  <p class="para-1 {{section.settings.text_alignment}}">{{ section.settings.top_bar_text }}</p>
+  <p class="{{section.settings.text_alignment}}">
+  <a class="para-1" href="#">  {{ section.settings.top_bar_text }} </a>
+  </p>
 </div>
 
 {% schema %}
@@ -52,7 +57,7 @@
       "type": "text",
       "id": "top_bar_text",
       "label": "Text",
-      "default": "hello"
+      "default": "mega sale  discount all item up to 30% for christmast event"
     },
     {
       "type": "select",
@@ -74,6 +79,7 @@
       "default": "center",
       "label": "Text Align"
     },
+    
     {
       "type": "select",
       "id": "bg_color_scheme",
@@ -81,8 +87,8 @@
       
       "options": [
         {
-          "value": "bg-blue",
-          "label": "blue"
+          "value": "bg-yellow",
+          "label": "yellow"
         },
         {
           "value": "bg-white",
@@ -93,29 +99,9 @@
           "label": "black"
         }
       ],
-      "default":"bg-white"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "label":"Text Color",
-      
-      "options": [
-        {
-          "value": "blue",
-          "label": "blue"
-        },
-        {
-          "value": "white",
-          "label": "white"
-        },
-        {
-          "value": "black",
-          "label": "black"
-        }
-      ],
-      "default":"black"
+      "default":"bg-yellow"
     }
+  
   ],
   "presets": [
     {

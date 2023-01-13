@@ -1,52 +1,102 @@
-<header>
-    <div class="container">
-      <nav class="header__inline-menu">
-        <ul class="list-menu list-menu--inline" role="list">
-          {%- for link in section.settings.menu.links -%}
+<header class="{{section.settings.bg_color_scheme}}">
+  <div class="container">
+    <nav class="main-nav">
+      <ul>
+        {% if section.settings.menu != blank %}
+          {% for link in section.settings.menu.links %}
             <li>
-                <a href="{{ link.url }}" class="header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
-                  <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                </a>
+              <a href="{{ link.url }}">{{ link.title }}</a>
             </li>
-          </ul>
-      </nav>
+          {% endfor %}
+        {% else %}
+          {% for link in linklists['main-menu'].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </nav>
+    <div class="logo">
+      {% if section.settings.logo_image != blank %}
+        <img src="{{section.settings.logo_image | image_url }}">
+      {% else %}
+        <img src="{{images['edge.png'] | image_url }}">
+      {% endif %}
     </div>
+    <div>
+      <ul>
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'header items' -%}
+              <li>{{ block.settings.header_item }}</li>
+          {%- endcase -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
 </header>
+
 {%- schema -%}
 {
-    "name":"header_2",
-    "tag":"section",
-    "settings":[
-      {
-        "type": "link_list",
-        "id": "menu",
-        "label": "Menu"
-      },
+  "name": "header_2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "logo"
+    },
+    {
+      "type": "select",
+      "id": "bg_color_scheme",
+      "label": "Background Color",
+      "default": "bg-black",
+      "options": [
         {
-            "type":"select",
-            "id":"bg_color_scheme",
-            "label":"Background Color",
-            "default":"bg-white",
-            "options":[
-                {
-                    "value": "bg-yellow",
-                    "label": "yellow"
-                  },
-                  {
-                    "value": "bg-white",
-                    "label": "white"
-                  },
-                  {
-                    "value": "bg-black",
-                    "label": "black"
-                  }
-            ]
+          "value": "bg-yellow",
+          "label": "yellow"
+        },
+        {
+          "value": "bg-white",
+          "label": "white"
+        },
+        {
+          "value": "bg-black",
+          "label": "black"
         }
-    ],
-    "presets":[
-      {
-        "name":"header-2"
-      }
-    ]
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "header_items",
+      "type": "header_items",
+      
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "header_item",
+          "label": "item"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "header-2",
+      "blocks": [
+        {
+          "type": "header_items"
+        }
+      ]
+    }
+  ]
 }
 {%- endschema -%}

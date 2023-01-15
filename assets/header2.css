@@ -1,0 +1,56 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 75px;
+    padding-right: 75px;
+    border-bottom: 4px solid gray;
+}
+header .main-nav ul{
+    display: flex;
+    align-items: center;
+    padding-left: 0 !important;
+}
+header .main-nav ul li{
+    list-style: none;
+    margin-right: 40px;
+}
+header .main-nav ul li a{
+  text-decoration: none;
+  color: white;
+font-size: 15px;
+font-weight: 500;
+text-transform: uppercase;
+}
+header .logo{
+    display: flex;
+    align-items: center;
+}
+header ul.items{
+    display: flex;
+    align-items: center;
+    padding-left: 0 !important;
+}
+header ul.items li{
+    list-style: none;
+}
+header ul.items li button{
+    background-color: transparent;
+    cursor: pointer;
+margin-left: 40px;
+border: none;
+color: white;
+font-size: 15px;
+font-weight: 500;
+text-transform: uppercase;
+}
+.style_1{
+    flex-flow: row;
+}
+.style_2{
+    flex-flow: row-reverse;
+}
+.style_3{
+ order: -1;
+}

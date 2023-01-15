@@ -1,39 +1,51 @@
-<header class="{{section.settings.bg_color_scheme}}">
-  <div class="container">
-    <nav class="main-nav">
-      <ul>
-        {% if section.settings.menu != blank %}
-          {% for link in section.settings.menu.links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        {% else %}
-          {% for link in linklists['main-menu'].links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        {% endif %}
-      </ul>
-    </nav>
-    <div class="logo">
-      {% if section.settings.logo_image != blank %}
-        <img src="{{section.settings.logo_image | image_url }}">
+{{ 'header2.css' | asset_url | stylesheet_tag }}
+{% style %}
+  header{
+    padding-top:{{section.settings.padding-top | times: 0.75 | round: 0}}px;
+    padding-bottom:{{section.settings.padding-bottom | times: 0.75 | round: 0}}px;
+  }
+{% endstyle %}
+
+<header class="{{section.settings.bg_color_scheme}} {{section.settings.style_header}} {{section.settings.padding-top}} {{section.settings.padding-bottom}}">
+  <nav class="main-nav">
+    <ul>
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
       {% else %}
-        <img src="{{images['edge.png'] | image_url }}">
+        {% for link in linklists['main-menu'].links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
       {% endif %}
-    </div>
-    <div>
-      <ul>
+    </ul>
+  </nav>
+  <div class="logo">
+    {% if section.settings.logo_image != blank %}
+      <img src="{{section.settings.logo_image | image_url }}">
+    {% else %}
+      <img src="{{images['edge.png'] | image_url }}">
+    {% endif %}
+  </div>
+  <div>
+    <ul class="items">
+      {% comment %}
         {%- for block in section.blocks -%}
           {%- case block.type -%}
-            {%- when 'header items' -%}
+            {%- when 'header_items' -%}
               <li>{{ block.settings.header_item }}</li>
           {%- endcase -%}
         {%- endfor -%}
-      </ul>
-    </div>
+      {% endcomment %}
+      <li><button>search</button></li>
+      <li><button>$usd</button></li>
+      <li><button>account</button></li>
+      <li><button>basket</button></li>
+    </ul>
   </div>
 </header>
 
@@ -71,26 +83,67 @@
           "label": "black"
         }
       ]
+    },
+    {
+      "type":"range",
+      "id":"padding-top",
+      "min":0,
+      "max":120,
+      "step":4,
+      "unit":"px",
+      "default":28,
+      "label":"padding top"
+    },
+    {
+      "type":"range",
+      "id":"padding-bottom",
+      "min":0,
+      "max":100,
+      "step":4,
+      "unit":"px",
+      "default":28,
+      "label":"padding bottom"
+    },
+    {
+      "type":"select",
+      "id":"style_header",
+      "label":"style",
+      "default":"style_1",
+      "options":[
+        {
+          "value":"style_1",
+          "label":"style 1"
+        },
+        {
+          "value":"style_2",
+          "label":"style 2"
+        },
+        {
+          "value":"style_3",
+          "label":"style 3"
+        }
+      ]
     }
   ],
   "blocks": [
     {
       "name": "header_items",
       "type": "header_items",
-      
-      "settings": [
 
+      "settings": [
         {
           "type": "text",
           "id": "header_item",
-          "label": "item"
+          "label": "item",
+          "default":"account"
         }
-      ]
-    }
+          ]
+        }
+     
   ],
   "presets": [
     {
-      "name": "header-2",
+      "name": "header_2",
       "blocks": [
         {
           "type": "header_items"

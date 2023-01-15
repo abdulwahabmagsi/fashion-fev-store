@@ -138,25 +138,60 @@
         "block_order": [
           "announcement-bar-0"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
-      "header": {
-        "type": "header",
-        "settings": {
-          "color_scheme": "background-1",
-          "logo": "{{ shop.brand.logo }}",
-          "logo_width": 90,
-          "logo_position": "middle-left",
-          "menu": "main-menu",
-          "menu_type_desktop": "dropdown",
-          "show_line_separator": true,
-          "enable_sticky_header": true,
-          "mobile_logo_position": "center",
-          "margin_bottom": 0,
-          "padding_top": 20,
-          "padding_bottom": 20
-        }
+      // "header": {
+      //   "type": "header",
+      //   "settings": {
+      //     "color_scheme": "background-1",
+      //     "logo": "{{ shop.brand.logo }}",
+      //     "logo_width": 90,
+      //     "logo_position": "middle-left",
+      //     "menu": "main-menu",
+      //     "menu_type_desktop": "dropdown",
+      //     "show_line_separator": true,
+      //     "enable_sticky_header": true,
+      //     "mobile_logo_position": "center",
+      //     "margin_bottom": 0,
+      //     "padding_top": 20,
+      //     "padding_bottom": 20
+      //   }
+      // },
+      "header_2": {
+        "type": "header2",
+        "blocks": {
+          "header_item_1": {
+            "type": "header_items",
+            "settings":{
+              "heading":"account"
+            }
+          },
+          "header_item_2": {
+            "type": "header_items",
+            "settings":{
+              "heading":"account"
+            }
+          },
+          "header_item_3": {
+            "type": "header_items",
+            "settings":{
+              "heading":"account"
+            }
+            
+          },
+          "header_item_4": {
+            "type": "header_items",
+            "settings":{
+              "heading":"account"
+            }
+          }
+        },
+        "block_order": [
+          "header_item_1",
+          "header_item_2",
+          "header_item_3",
+          "header_item_4"
+        ]
       },
       "footer": {
         "type": "footer",
@@ -357,25 +392,60 @@
           "block_order": [
             "announcement-bar-0"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
-        "header": {
-          "type": "header",
-          "settings": {
-            "color_scheme": "background-1",
-            "logo": "{{ shop.brand.logo }}",
-            "logo_width": 90,
-            "logo_position": "middle-left",
-            "menu": "main-menu",
-            "menu_type_desktop": "dropdown",
-            "show_line_separator": true,
-            "enable_sticky_header": true,
-            "mobile_logo_position": "center",
-            "margin_bottom": 0,
-            "padding_top": 20,
-            "padding_bottom": 20
-          }
+        // "header": {
+        //   "type": "header",
+        //   "settings": {
+        //     "color_scheme": "background-1",
+        //     "logo": "{{ shop.brand.logo }}",
+        //     "logo_width": 90,
+        //     "logo_position": "middle-left",
+        //     "menu": "main-menu",
+        //     "menu_type_desktop": "dropdown",
+        //     "show_line_separator": true,
+        //     "enable_sticky_header": true,
+        //     "mobile_logo_position": "center",
+        //     "margin_bottom": 0,
+        //     "padding_top": 20,
+        //     "padding_bottom": 20
+        //   }
+        // },
+        "header_2": {
+          "type": "header2",
+          "blocks": {
+            "header_item_1": {
+              "type": "header_items",
+              "settings":{
+                "heading":"account"
+              }
+            },
+            "header_item_2": {
+              "type": "header_items",
+              "settings":{
+                "heading":"account"
+              }
+            },
+            "header_item_3": {
+              "type": "header_items",
+              "settings":{
+                "heading":"account"
+              }
+              
+            },
+            "header_item_4": {
+              "type": "header_items",
+              "settings":{
+                "heading":"account"
+              }
+            }
+          },
+          "block_order": [
+            "header_item_1",
+            "header_item_2",
+            "header_item_3",
+            "header_item_4"
+          ]
         },
         "footer": {
           "type": "footer",

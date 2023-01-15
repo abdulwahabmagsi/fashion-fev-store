@@ -1,3 +1,9 @@
+{% style %}
+  .top-bar{
+    padding-top:{{section.settings.padding-top | times: 0.75 | round: 0}}px;
+    padding-bottom:{{section.settings.padding-bottom | times: 0.75 | round: 0}}px;
+  }
+{% endstyle %}
 <style>
   html {
     --primary-color:rgb(254,226,167);
@@ -15,6 +21,9 @@
   .bg-white{
   Background: var(--white);
   color:var(--black)
+  }
+  p{
+    margin:0px
   }
   .yellow{
   color: var(--primary-color)
@@ -42,7 +51,7 @@
 
 </style>
 
-<div class="top-bar {{section.settings.bg_color_scheme}}">
+<div class="top-bar {{section.settings.bg_color_scheme}} {{section.settings.padding-top}} {{section.settings.padding-bottom}}">
   <p class="{{section.settings.text_alignment}}">
   <a class="para-1" href="#">  {{ section.settings.top_bar_text }} </a>
   </p>
@@ -100,6 +109,26 @@
         }
       ],
       "default":"bg-yellow"
+    },
+    {
+      "type":"range",
+      "id":"padding-top",
+      "min":0,
+      "max":40,
+      "step":2,
+      "unit":"px",
+      "default":14,
+      "label":"padding top"
+    },
+    {
+      "type":"range",
+      "id":"padding-bottom",
+      "min":0,
+      "max":40,
+      "step":2,
+      "unit":"px",
+      "default":14,
+      "label":"padding bottom"
     }
   
   ],
